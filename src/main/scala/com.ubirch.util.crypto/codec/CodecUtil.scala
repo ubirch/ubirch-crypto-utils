@@ -13,18 +13,16 @@ object CodecUtil {
     * @return array of bytes
     */
   def multiDecoder(encoded: String): Option[Array[Byte]] = {
-    try {
-      Some(Hex.decodeHex(encoded.toCharArray))
-    }
+    try
+      encoded.last match {
+        case '=' =>
+          Some(Base64.getDecoder.decode(encoded.getBytes("UTF-8")))
+        case _ =>
+          Some(Hex.decodeHex(encoded.toCharArray))
+      }
     catch {
       case e: Exception =>
-        try {
-          Some(Base64.getDecoder.decode(encoded.getBytes("UTF-8")))
-        }
-        catch {
-          case e: Exception =>
-            None
-        }
+        None
     }
   }
 

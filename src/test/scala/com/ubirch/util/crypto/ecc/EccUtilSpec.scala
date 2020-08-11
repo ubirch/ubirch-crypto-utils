@@ -1,6 +1,6 @@
 package com.ubirch.util.crypto.ecc
 
-import com.typesafe.scalalogging.slf4j.StrictLogging
+import com.typesafe.scalalogging.StrictLogging
 import org.scalatest.{FeatureSpec, Matchers}
 
 /**
@@ -17,7 +17,7 @@ class EccUtilSpec
   private val binPayload = payload.getBytes
 
   private val (publicKeyValid_1, privateKeyValid_1) = eccUtil.generateEccKeyPair
-  private val publicKeyValidB64_1 = eccUtil.encodePublicKey(publicKeyValid_1)
+  private val publicKeyValidB64_1: String = eccUtil.encodePublicKey(publicKeyValid_1)
   private val privateKeyValidB64_1 = eccUtil.encodePrivateKey(privateKeyValid_1)
 
   private val (publicKeyValid_2, privateKeyValid_2) = eccUtil.generateEccKeyPair
