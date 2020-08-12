@@ -24,10 +24,10 @@ scmInfo := Some(ScmInfo(
 (sys.env.get("CLOUDREPO_USER"), sys.env.get("CLOUDREPO_PW")) match {
   case (Some(username), Some(password)) =>
     println("USERNAME and/or PASSWORD found.")
-    credentials += Credentials("ubirch.utils.cloudrepo", "ubirch.mycloudrepo.io", username, password)
+    credentials += Credentials("ubirch.mycloudrepo.io", "ubirch.mycloudrepo.io", username, password)
   case _ =>
-    println("USERNAME and/or PASSWORD is taken from /.sbt/.credentials-public")
-    credentials += Credentials(Path.userHome / ".sbt" / ".credentials-public")
+    println("USERNAME and/or PASSWORD is taken from /.sbt/.credentials")
+    credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 }
 
 
@@ -35,7 +35,7 @@ scmInfo := Some(ScmInfo(
  * RESOLVER
  ********************************************************/
 
-val resolverUbirchUtils = "ubirch.utils.cloudrepo" at "https://ubirch.mycloudrepo.io/repositories/ubirch-utils-mvn"
+val resolverUbirchUtils = "ubirch.mycloudrepo.io" at "https://ubirch.mycloudrepo.io/repositories/ubirch-utils-mvn"
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
