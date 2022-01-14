@@ -1,11 +1,10 @@
 package com.ubirch.util.crypto.hash
 
-import java.util.Base64
-
 import com.roundeights.hasher.Implicits._
 import com.roundeights.hasher.{Digest, Hash}
 import org.apache.commons.codec.binary.Hex
 
+import java.util.Base64
 import scala.util.Random
 
 /**
@@ -212,7 +211,7 @@ object HashUtil {
     */
   def randomSha256Hashes(elementCount: Int = Random.nextInt(30000)): Seq[String] = {
 
-    val randomSeq: Seq[String] = for (i <- 1 to elementCount) yield Random.nextLong.toString
+    val randomSeq: Seq[String] = for (i <- 1 to elementCount) yield Random.nextLong().toString
     randomSeq.map(HashUtil.sha256HexString)
 
   }

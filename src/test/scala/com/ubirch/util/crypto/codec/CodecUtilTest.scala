@@ -1,23 +1,24 @@
 package com.ubirch.util.crypto.codec
 
-import java.util.Base64
-
 import com.typesafe.scalalogging.StrictLogging
 import org.apache.commons.codec.binary.Hex
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
-class CodecUtilTest extends FeatureSpec
+import java.util.Base64
+
+class CodecUtilTest extends AnyFeatureSpec
   with StrictLogging
   with Matchers {
 
-  feature("happy decoding") {
+  Feature("happy decoding") {
 
 
-    scenario("invalid") {
+    Scenario("invalid") {
       CodecUtil.multiDecoder("z").isEmpty shouldBe true
     }
 
-    scenario("valid hex") {
+    Scenario("valid hex") {
       val testString = "Hallo Welt!"
       val hexString = Hex.encodeHexString(testString.getBytes("UTF-8"))
       val bytes = Hex.decodeHex(hexString.toCharArray)
@@ -28,7 +29,7 @@ class CodecUtilTest extends FeatureSpec
       bytesOpt.get shouldBe bytes
     }
 
-    scenario("valid base64") {
+    Scenario("valid base64") {
       val testString = "Hallo Welt!"
       val b64String = Base64.getEncoder.encodeToString(testString.getBytes("UTF-8"))
 

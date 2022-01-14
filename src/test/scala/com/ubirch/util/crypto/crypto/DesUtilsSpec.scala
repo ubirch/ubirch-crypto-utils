@@ -1,19 +1,20 @@
 package com.ubirch.util.crypto.crypto
 
-import java.util.Base64
-
 import com.typesafe.scalalogging.StrictLogging
 import com.ubirch.util.crypto.encrypt.DES
 import org.apache.commons.codec.binary.Hex
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
-class DesUtilsSpec extends FeatureSpec
+import java.util.Base64
+
+class DesUtilsSpec extends AnyFeatureSpec
   with StrictLogging
   with Matchers {
 
-  feature("basic tests") {
+  Feature("basic tests") {
 
-    scenario("encrypt bytes to bytes") {
+    Scenario("encrypt bytes to bytes") {
       val data = "Hallo Welt öäüÖÄÜß".getBytes("UTF-8")
 
       val secret = "01234567"
@@ -27,7 +28,7 @@ class DesUtilsSpec extends FeatureSpec
       data shouldBe decData2
     }
 
-    scenario("encrypt String to bytes") {
+    Scenario("encrypt String to bytes") {
       val data = "Hallo Welt öäüÖÄÜß"
 
       val secret = "01234567"
@@ -39,7 +40,7 @@ class DesUtilsSpec extends FeatureSpec
       data.getBytes("UTF-8") shouldBe decData
     }
 
-    scenario("encrypt Base64 to bytes") {
+    Scenario("encrypt Base64 to bytes") {
       val data = Base64.getEncoder.encodeToString("Hallo Welt öäüÖÄÜß".getBytes("UTF-8"))
 
       val secret = "01234567"
@@ -51,7 +52,7 @@ class DesUtilsSpec extends FeatureSpec
       data shouldBe decData
     }
 
-    scenario("encrypt Hex to bytes") {
+    Scenario("encrypt Hex to bytes") {
       val data = "Hallo Welt öäüÖÄÜß"
       val dataBytes = data.getBytes("UTF-8")
       val dataHex = Hex.encodeHexString(dataBytes)
@@ -71,7 +72,7 @@ class DesUtilsSpec extends FeatureSpec
 
     }
 
-    scenario("encrypt String to Base64") {
+    Scenario("encrypt String to Base64") {
       val data = "Hallo Welt öäüÖÄÜß"
       val dataBytes = "Hallo Welt öäüÖÄÜß".getBytes("UTF-8")
 
@@ -88,7 +89,7 @@ class DesUtilsSpec extends FeatureSpec
       data shouldBe decDataStr
     }
 
-    scenario("encrypt String to Hex") {
+    Scenario("encrypt String to Hex") {
       val data = "Hallo Welt öäüÖÄÜß"
       val dataBytes = "Hallo Welt öäüÖÄÜß".getBytes("UTF-8")
 

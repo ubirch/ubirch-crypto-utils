@@ -1,13 +1,14 @@
 package com.ubirch.util.crypto.ecc
 
 import com.typesafe.scalalogging.StrictLogging
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
   * Created by derMicha on 19/05/17.
   */
 class EccUtilSpec
-  extends FeatureSpec
+  extends AnyFeatureSpec
     with StrictLogging
     with Matchers {
   private val eccUtil = new EccUtil()
@@ -31,9 +32,9 @@ class EccUtilSpec
   private val signatureEmptyPayloadValid = eccUtil.signPayload(privateKeyValidB64_1, emptyPayload)
   private val signatureInvalid = "invalidSignature"
 
-  feature("ECCUtil Tests") {
+  Feature("ECCUtil Tests") {
 
-    scenario("validate with valid payload(empty)/pubKey/signature") {
+    Scenario("validate with valid payload(empty)/pubKey/signature") {
       logger.info(s"publicKey: $publicKeyValidB64_1")
       logger.info(s"privateKey: $privateKeyValidB64_1")
       logger.info(s"signature: $signatureEmptyPayloadValid")
@@ -42,7 +43,7 @@ class EccUtilSpec
       eccUtil.validateSignature(publicKeyValidB64_1, signatureEmptyPayloadValid, emptyPayload) shouldBe true
     }
 
-    scenario("validate with valid payload/pubKey/signature") {
+    Scenario("validate with valid payload/pubKey/signature") {
       logger.info(s"publicKey: $publicKeyValidB64_1")
       logger.info(s"privateKey: $privateKeyValidB64_1")
       logger.info(s"signature: $signaturePayloadValid")
@@ -51,7 +52,7 @@ class EccUtilSpec
       eccUtil.validateSignature(publicKeyValidB64_1, signaturePayloadValid, payload) shouldBe true
     }
 
-    scenario("validate with valid payload/signature and invalid pubKey") {
+    Scenario("validate with valid payload/signature and invalid pubKey") {
       logger.info(s"publicKey: $publicKeyInvalid")
       logger.info(s"signature: $signaturePayloadValid")
       logger.info(s"payload: >>$payload<<")
@@ -61,7 +62,7 @@ class EccUtilSpec
       }
     }
 
-    scenario("validate with valid payload/signature and wrong pubKey") {
+    Scenario("validate with valid payload/signature and wrong pubKey") {
       logger.info(s"publicKey: $publicKeyValidB64_2")
       logger.info(s"signature: $signaturePayloadValid")
       logger.info(s"payload: >>$payload<<")
@@ -71,7 +72,7 @@ class EccUtilSpec
 
     }
 
-    scenario("sign haseh bin data") {
+    Scenario("sign haseh bin data") {
       logger.info(s"publicKey: $publicKeyValidB64_1")
       logger.info(s"privateKey: $privateKeyValidB64_1")
       logger.info(s"payload: >>$payload<<")
