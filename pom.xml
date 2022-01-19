@@ -22,7 +22,7 @@
 
     <groupId>com.ubirch.util</groupId>
     <artifactId>ubirch-crypto-utils_${scala.compat.version}</artifactId>
-    <version>0.5.4-SNAPSHOT</version>
+    <version>0.5.4</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -71,18 +71,18 @@
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 
-        <scala.version>2.12.8</scala.version>
-        <scala.compat.version>2.12</scala.compat.version>
-        <scalatest.version>3.0.5</scalatest.version>
+        <scala.version>2.13.6</scala.version>
+        <scala.compat.version>2.13</scala.compat.version>
+        <scalatest.version>3.2.10</scalatest.version>
 
-        <ubirch-config.version>0.2.5-SNAPSHOT</ubirch-config.version>
-        <hasher.version>1.2.0</hasher.version>
-        <commons-codec.version>1.11</commons-codec.version>
-        <joda-time.version>2.10</joda-time.version>
-        <joda-convert.version>2.1.1</joda-convert.version>
-        <scala-logging.version>3.7.2</scala-logging.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
+        <ubirch-config.version>0.2.5</ubirch-config.version>
+        <hasher.version>1.2.2</hasher.version>
+        <commons-codec.version>1.15</commons-codec.version>
+        <joda-time.version>2.10.13</joda-time.version>
+        <joda-convert.version>2.2.2</joda-convert.version>
+        <scala-logging.version>3.9.4</scala-logging.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <logback.version>1.2.10</logback.version>
 
         <!-- plugins -->
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
@@ -106,10 +106,11 @@
         </dependency>
 
         <dependency>
-            <groupId>com.roundeights</groupId>
+            <groupId>com.outr</groupId>
             <artifactId>hasher_${scala.compat.version}</artifactId>
             <version>${hasher.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>commons-codec</groupId>
@@ -303,6 +304,19 @@
                 <configuration>
                     <skip>false</skip>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
