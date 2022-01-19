@@ -22,7 +22,7 @@
 
     <groupId>com.ubirch.util</groupId>
     <artifactId>ubirch-crypto-utils_${scala.compat.version}</artifactId>
-    <version>0.5.4-SNAPSHOT</version>
+    <version>0.5.4</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -75,7 +75,7 @@
         <scala.compat.version>2.13</scala.compat.version>
         <scalatest.version>3.2.10</scalatest.version>
 
-        <ubirch-config.version>0.2.5-SNAPSHOT</ubirch-config.version>
+        <ubirch-config.version>0.2.5</ubirch-config.version>
         <hasher.version>1.2.2</hasher.version>
         <commons-codec.version>1.15</commons-codec.version>
         <joda-time.version>2.10.13</joda-time.version>
@@ -304,6 +304,19 @@
                 <configuration>
                     <skip>false</skip>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
